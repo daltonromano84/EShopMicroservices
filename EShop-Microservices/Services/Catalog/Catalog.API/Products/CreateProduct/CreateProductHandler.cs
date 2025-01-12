@@ -1,5 +1,7 @@
 ﻿
 
+
+
 namespace Catalog.API.Products.CreateProduct
 {
 
@@ -8,11 +10,23 @@ namespace Catalog.API.Products.CreateProduct
 
     public record CreateProductResult(Guid Id);
 
-    internal class CreateProductHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
+    public class CreateProductCommandValidator:AbstractValidator<CreateProductCommand>
+    {
+        public CreateProductCommandValidator()
+        {
+            RuleFor(x => x.Name).NotEmpty().WithName("Name is required");
+            RuleFor(x => x.Category).NotEmpty().WithName("Category is required");
+            RuleFor(x => x.ImageFile).NotEmpty().WithName("ImageFile is required");
+            RuleFor(x => x.Price).GreaterThan(0).WithName("Price must be greater than 0");
+
+        }
+    }
+
+    internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public  async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-
+         
 
             //create product entity from command objetc
             var product = new Product
