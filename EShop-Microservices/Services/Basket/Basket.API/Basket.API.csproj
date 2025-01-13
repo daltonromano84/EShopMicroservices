@@ -4,22 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>57cf62d0-07e9-4fac-a865-5fbda7cce3da</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
-    <UserSecretsId>5ea42cf9-b55d-4944-8362-442b3b88faf1</UserSecretsId>
-    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
-    
-    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.0" />
-    
-    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.0" />
-    
     <PackageReference Include="Carter" Version="8.0.0" />
-    
-    <PackageReference Include="Marten" Version="7.35.2" />
-    
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
   </ItemGroup>
 
