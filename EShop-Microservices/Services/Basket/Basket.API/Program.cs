@@ -12,13 +12,22 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 
+builder.Services.AddMarten(options =>
+{
+
+    options.Connection(builder.Configuration.GetConnectionString("DataBase")!);
+    options.Schema.For<ShoppingCart>().Identity(x => x.UserName);
+
+
+}).UseLightweightSessions();
+
 //builder.Services.AddMarten(opts =>
 //{
 //    opts.Connection(builder.Configuration.GetConnectionString("Database")!);
 //    opts.Schema.For<ShoppingCart>().Identity(x => x.UserName);
 //}).UseLightweightSessions();
 
-//builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 var app = builder.Build();

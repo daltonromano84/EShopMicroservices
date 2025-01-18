@@ -47,7 +47,7 @@ namespace BuildingBlocks.Exceptions.Handler
                    (
                        exception.Message,
                        exception.GetType().Name,
-                       context.Response.StatusCode = StatusCodes.Status500InternalServerError
+                       context.Response.StatusCode = StatusCodes.Status404NotFound
 
 
                    ),
